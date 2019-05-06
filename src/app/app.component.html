@@ -1,21 +1,63 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<app-profile-search (searchUser)="search($event)"></app-profile-search>
+<br><hr><br>
+<div class="row">
+  <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" *ngIf='data'  src="{{data.avatar_url}}" alt="Card image cap">
+          <div class="card-body login">
+            <h4 *ngIf='data' class="card-text"> {{data.login}}</h4>
+          </div>
+        </div>
+  </div>
+  <div class="col-md-8">
+      <span class="col-md-8">
+          <span>Repositories<span class="badge badge-pill badge-secondary">{{data.public_repos}}</span></span>
+       </span>
+     <span class="col-md-8">
+    <span>Public gists<span class="badge badge-pill badge-secondary">{{data.public_gists}}</span></span>
+   </span>
+ <span class="col-md-8">
+                                          <span>followers<span class="badge badge-pill badge-secondary">{{data.followers}}</span></span>
+ </span>
+                                                      <span class="col-md-8">
+                                               <span>following<span class="badge badge-pill badge-secondary">{{data.following}}</span></span>
+                                          </span>
+ <hr>
+                                          <br>
+ <ul class="list-group">
+  <li class="list-group-item"><strong>name </strong>{{data.login}}</li>
+  <li class="list-group-item"><strong>location </strong>{{data.location}}</li>
+  <li class="list-group-item"><strong>email </strong> {{data.email}}</li>
+  <li class="list-group-item"><strong>blog </strong> {{data.blog}}</li>
+  <li class="list-group-item"><strong>created at </strong>{{data.created_at}}</li>
+ </ul>
+
+  </div>
+        
+   </div>
+   <br><hr><br>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+        <h4 class="card-header"> <em> <b>Repositories</b></em> </h4>
+        <div class="card-body" *ngFor='let repo of repos'>
+          
+            <h4 > <a href="{{repo.html_url}} " target="_blank">{{repo.name}} 
+
+              </a>
+            </h4>
+            <p>{{repo.description}}</p>
+            <hr>
+          </div>
+     </div>
+     
+        <div class="col-md-2"></div>
+   </div>
+      
+  
+
+
+
 
 <router-outlet></router-outlet>
